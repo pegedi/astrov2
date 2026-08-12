@@ -12,6 +12,15 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^7.2.1"
+    "astro": "^7.2.1",
+    "better-auth": "^1.6.27",
+    "kysely": "^0.29.5",
+    "kysely-d1": "^0.4.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260812.1",
+    "@types/better-sqlite3": "^9.6.0",
+    "better-sqlite3": "^12.11.1",
+    "wrangler": "^4.122.0"
   }
 }
