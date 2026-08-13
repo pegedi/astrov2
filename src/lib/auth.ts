@@ -7,10 +7,12 @@ import { betterAuth } from "better-auth";
 import { Kysely } from 'kysely';
 import { D1Dialect } from 'kysely-d1';
 
-export function getAuth(env: { DB: D1Database; BETTER_AUTH_SECRET?: string }) {
+
+
+export function getAuth(env: { DB_ASTRO_TUTORIAL: D1Database; BETTER_AUTH_SECRET?: string }) {
     const db = new Kysely({
         dialect: new D1Dialect({
-            database: env.DB,
+            database: env.DB_ASTRO_TUTORIAL,
         }),
     });
 
@@ -19,6 +21,7 @@ export function getAuth(env: { DB: D1Database; BETTER_AUTH_SECRET?: string }) {
             db,
             type: "sqlite",
         },
+        baseURL: "http://localhost:4321",
         emailAndPassword: {
             enabled: true,
         },
@@ -27,6 +30,7 @@ export function getAuth(env: { DB: D1Database; BETTER_AUTH_SECRET?: string }) {
 }
 
 // for better-auth migrations (not for production) create in-mem db:
+// npx wrangler d1 execute better-auth-db --local --file=src/migrations/00-betterauth.sql
 // import Database from 'better-sqlite3';
 
 // export const auth = betterAuth({

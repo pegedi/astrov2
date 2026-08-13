@@ -1,0 +1,23 @@
+{
+	"$schema": "./node_modules/wrangler/config-schema.json",
+	"compatibility_date": "2026-08-12",
+	"compatibility_flags": [
+		"global_fetch_strictly_public"
+	],
+	"name": "tutorial",
+	"main": "@astrojs/cloudflare/entrypoints/server",
+	"assets": {
+		"directory": "./dist",
+		"binding": "ASSETS"
+	},
+	"observability": {
+		"enabled": true
+	},
+	"d1_databases": [
+		{
+			"binding": "DB_ASTRO_TUTORIAL",
+			"database_name": "better-auth-db",
+			"database_id": "8ed6d385-d7cc-470e-a4d4-00850b64e705"
+		}
+	]
+}

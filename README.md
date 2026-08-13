@@ -91,3 +91,4 @@ export const authClient = createAuthClient({
 
 ## run migrations
 
+Installed the Cloudflare Adapter: I ran npx astro add cloudflare. This installed @astrojs/cloudflare and wrangler, and automatically updated your astro.config.mjs.

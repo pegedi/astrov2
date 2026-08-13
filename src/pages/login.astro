@@ -1,0 +1,18 @@
+---
+// The Better Auth API logic is now correctly handled by src/pages/api/auth/[...all].ts
+// In your Astro pages, you simply render your UI.
+// You would typically use the client-side library `authClient` here to handle submissions.
+---
+
+<!-- If using native HTML forms without JS, point the action to the Better Auth endpoint -->
+<form method="post" action="/api/auth/sign-in/email">
+    <label>
+        Email
+        <input name="email" type="email" required />
+    </label>
+    <label>
+        Password
+        <input name="password" type="password" required />
+    </label>
+    <button type="submit">Sign In</button>
+</form>

@@ -1,0 +1,48 @@
+---
+import { getAuth } from "../lib/auth";
+import { env } from "cloudflare:workers";
+
+export const prerender = false;
+
+const auth = getAuth(env as any);
+
+// Fetch the session server-side using the incoming request headers
+const session = await auth.api.getSession({
+    headers: Astro.request.headers,
+});
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Dashboard</title>
+    </head>
+    <body>
+        <h1>Dashboard</h1>
+
+        {
+            session ? (
+                <div style="padding: 1rem; border: 1px solid green; border-radius: 8px;">
+                    <h2>Successfully logged in! 🎉</h2>
+                    <p>
+                        <strong>Email:</strong> {session.user.email}
+                    </p>
+                    <p>
+                        <strong>User ID:</strong> {session.user.id}
+                    </p>
+
+                    <form method="post" action="/api/auth/sign-out">
+                        <button type="submit">Sign Out</button>
+                    </form>
+                </div>
+            ) : (
+                <div style="padding: 1rem; border: 1px solid red; border-radius: 8px;">
+                    <h2>Not logged in ❌</h2>
+                    <p>Please navigate to the login page to authenticate.</p>
+                    <a href="/login">Go to Login</a>
+                </div>
+            )
+        }
+    </body>
+</html>
