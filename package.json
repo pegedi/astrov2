@@ -21,6 +21,8 @@
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^5.20260812.1",
+    "@emnapi/core": "^1.11.3",
+    "@emnapi/runtime": "^1.11.3",
     "@types/better-sqlite3": "^9.6.0",
     "better-sqlite3": "^12.11.1",
     "wrangler": "^4.122.0"
