@@ -22,3 +22,10 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# wrangler state (local d1 database)
+.wrangler/
+*.sqlite
+*.sqlite3
+*.db
+*.db3

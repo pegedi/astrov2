@@ -91,4 +91,40 @@ export const authClient = createAuthClient({
 
 ## run migrations
 
-Installed the Cloudflare Adapter: I ran npx astro add cloudflare. This installed @astrojs/cloudflare and wrangler, and automatically updated your astro.config.mjs.
+Installed the Cloudflare Adapter: I ran `npx astro add cloudflare`. This installed @astrojs/cloudflare and wrangler, and automatically updated your astro.config.mjs.
+
+
+Create remote db:
+flags: `-- location`
+
+|value|region                                  |
+|-----|----------------------------------------|
+|wnam | Western North America                  |
+|enam | Eastern North America                  |
+|apac | Asia Pacific                           |
+|weur | Europe Central                         |
+|eeur | Europe West                            |
+|oc   | Oceania                                |
+
+Jurisdiction: `--jurisdiction`
+Values: `eu` and `fedramp`
+
+```sh
+# Create a new D1 database for better-auth
+npx wrangler d1 create better-auth-db --location=wnam
+#migrate D1 to cloudflare
+npx wrangler d1 execute better-auth-db --remote --file=src/migrations/00-betterauth.sql
+
+```
+
+There were some error in clouflare deployment.
+```sh
+#sync package.json to package-lock.json
+npm install
+
+#add missing dev depedencies
+npm install @emnapi/runtime@1.11.3 @emnapi/core@1.11.3 --save-dev
+
+```
+
+npx skills add better-auth/skills

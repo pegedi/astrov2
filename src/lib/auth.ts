@@ -9,7 +9,7 @@ import { D1Dialect } from 'kysely-d1';
 
 
 
-export function getAuth(env: { DB_ASTRO_TUTORIAL: D1Database; BETTER_AUTH_SECRET?: string }) {
+export function getAuth(env: { DB_ASTRO_TUTORIAL: D1Database; BETTER_AUTH_SECRET?: string; BETTER_AUTH_URL?: string }) {
     const db = new Kysely({
         dialect: new D1Dialect({
             database: env.DB_ASTRO_TUTORIAL,
@@ -21,7 +21,7 @@ export function getAuth(env: { DB_ASTRO_TUTORIAL: D1Database; BETTER_AUTH_SECRET
             db,
             type: "sqlite",
         },
-        baseURL: "http://localhost:4321",
+        baseURL: env.BETTER_AUTH_URL || "http://localhost:4321",
         emailAndPassword: {
             enabled: true,
         },
