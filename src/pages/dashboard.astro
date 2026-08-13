@@ -4,7 +4,7 @@ import { env } from "cloudflare:workers";
 
 export const prerender = false;
 
-const auth = getAuth(env as any);
+const auth = getAuth(env as any, Astro.request);
 
 // Fetch the session server-side using the incoming request headers
 const session = await auth.api.getSession({

@@ -5,7 +5,7 @@ import { env } from "cloudflare:workers";
 export const prerender = false;
 
 export const ALL: APIRoute = async (ctx) => {
-    const auth = getAuth(env as any);
+    const auth = getAuth(env as any, ctx.request);
 
     let req = ctx.request;
     let isForm = false;
